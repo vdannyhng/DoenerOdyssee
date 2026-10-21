@@ -139,7 +139,7 @@ export function parseRating(raw: string): number | null {
   return n >= 0 && n <= 10 ? n : null;
 }
 
-/** Fiktives Kopfgeld: gerundeter Gesamtwert × 100 Mio. Taler */
+/** Fiktives Kopfgeld: gerundeter Gesamtwert × 100 Mio. Berries */
 export function bountyFor(overall: number): number {
   return Math.round(roundScore(overall) * 100) * 1_000_000;
 }

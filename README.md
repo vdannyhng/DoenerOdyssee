@@ -46,7 +46,7 @@ Ein Pre-Commit-Hook ([scripts/pre-commit.mjs](scripts/pre-commit.mjs)) prüft ge
 
 ```
 src/app/            Screens (Expo Router): sign-in, onboarding, (app)/(tabs)/…, spots/…, visits/…
-src/components/     UI-Bausteine (ui/) und eigene Illustrationen (art/: Jolly Roger, Avatare, Taler)
+src/components/     UI-Bausteine (ui/) und eigene Illustrationen (art/: Jolly Roger, Avatare, Berry-Zeichen)
 src/features/       auth, crew, logbook (Spots/Besuche/Noten), ranking (Berechnung, Wanted-Wand), spots
 src/i18n/de.ts      Alle Texte der App
 src/lib/            Supabase-Client, Env, Fehlermeldungen, Datum
@@ -60,7 +60,7 @@ supabase/           Migrationen (Schema + RLS) und Demo-Seed
   zählt gleich). Tie-Break: mehr Bewerter → höhere Minimalnote → Name. Siehe
   [src/features/ranking/scoring.ts](src/features/ranking/scoring.ts).
 - **Noten:** eingeben mit einer Nachkommastelle (0.1er-Schritte), Durchschnitte mit zwei Nachkommastellen.
-- **Kopfgeld:** gerundeter Gesamtwert × 100 Mio. Taler.
+- **Kopfgeld:** gerundeter Gesamtwert × 100 Mio. Berries (eigenes, nachgezeichnetes Berry-Zeichen).
 - **Flotte (Tiers):** S Flaggschiff ≥ 9 · A Fregatte ≥ 8 · B Brigg ≥ 7 · C Schoner ≥ 5.5 · D Ruderboot ≥ 4 ·
   F Floß (Schwellen in den Crew-Einstellungen änderbar).
 - **Fotos:** privater Bucket `photos`, Ordner je Crew, verkleinert auf 1280 px.

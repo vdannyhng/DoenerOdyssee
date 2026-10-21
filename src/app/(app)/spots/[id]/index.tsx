@@ -4,7 +4,7 @@ import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { DoenerIcon } from '@/components/art/DoenerIcon';
-import { TalerCoin } from '@/components/art/TalerCoin';
+import { BerrySign } from '@/components/art/BerrySign';
 import { AppText, Button, Card, Chip, ErrorState, LoadingState, Screen, TierBadge } from '@/components/ui';
 import { useMembers, useMyMember } from '@/features/crew/api';
 import { useDeleteSpot } from '@/features/logbook/api';
@@ -125,7 +125,7 @@ export default function SpotDetailScreen() {
               </View>
             </View>
             <View style={styles.inline}>
-              <TalerCoin size={20} />
+              <BerrySign size={22} color={poster.ink} />
               <Text style={styles.bounty}>
                 {formatBounty(bountyFor(score.overall))}- {t.ranking.currency}
               </Text>

@@ -6,7 +6,7 @@ import Animated, { ZoomIn } from 'react-native-reanimated';
 import { DoenerIcon } from '@/components/art/DoenerIcon';
 import { PosterPaper } from '@/components/art/PosterPaper';
 import { ScrollOrnament } from '@/components/art/ScrollOrnament';
-import { TalerSign } from '@/components/art/TalerSign';
+import { BerrySign } from '@/components/art/BerrySign';
 import { bountyFor, formatBounty, formatScore, type TierKey } from '@/features/ranking/scoring';
 import { t } from '@/i18n/de';
 import { fonts } from '@/theme/tokens';
@@ -141,7 +141,7 @@ export function WantedPoster({ rank, name, overall, raters, tier, photoUrl, size
                 {title}
               </Text>
               <View style={styles.bountyRow}>
-                <TalerSign size={bountySize * 1.15} color={INK} />
+                <BerrySign size={bountySize * 1.15} color={INK} />
                 <Text
                   numberOfLines={1}
                   adjustsFontSizeToFit

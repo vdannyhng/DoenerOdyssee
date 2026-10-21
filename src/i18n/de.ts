@@ -1,6 +1,6 @@
 /**
  * Alle Texte der App an einem Ort. Ton: augenzwinkerndes Piratenabenteuer, aber klar verständlich.
- * Eigene Begriffe (Taler, Seekarte, Crew) – keine Namen aus Originalwerken.
+ * Kopfgelder in Berries (bewusste Ausnahme von der Regel „keine Originalbegriffe“, nur für die private Crew-App).
  */
 const plural = (n: number, one: string, many: string) => (n === 1 ? one : many);
 
@@ -80,7 +80,7 @@ export const de = {
       `Gesucht wegen unverschämt gutem Döner. Platz ${rank} der Crew-Liste, Gesamtwert ${score}, ` +
       `${raters} Bewerter, Klasse ${tier}. Hinweise an die Crew.`,
     bounty: 'Kopfgeld',
-    currency: 'Taler',
+    currency: 'Berries',
     raters: (n: number) => `${n} ${plural(n, 'Bewerter', 'Bewerter')}`,
     rank: (n: number) => `Platz ${n}`,
     emptyTitle: 'Noch keine Insel erobert',
