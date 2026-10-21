@@ -1,6 +1,6 @@
 /**
  * Alle Texte der App an einem Ort. Ton: augenzwinkerndes Piratenabenteuer, aber klar verständlich.
- * Kopfgelder in Berries (bewusste Ausnahme von der Regel „keine Originalbegriffe“, nur für die private Crew-App).
+ * Rein private Crew-App: One-Piece-Begriffe wie Berries sind ausdrücklich erwünscht.
  */
 const plural = (n: number, one: string, many: string) => (n === 1 ? one : many);
 

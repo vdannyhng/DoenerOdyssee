@@ -8,7 +8,7 @@ Stand: 2026-10-21 · **M1 ✅ · M2 ✅ · M3 ✅** · M4 Teilen & Statistik · 
 - `npm run check` ist grün: `tsc --noEmit`, ESLint, Prettier, Jest.
 - `npm run test:rls` ist grün (Zugriffsregeln gegen die lokale Datenbank).
 - Jeder neue UI-Text steht in `src/i18n/de.ts`.
-- Eigener Piraten-Look ohne Originalbilder, -logos, -figuren oder -namen aus One Piece.
+- One-Piece-Look (rein private Nutzung), Grafiken als eigene SVG-Zeichnungen statt eingebundener Bilder.
 - README ist aktualisiert, ein Commit pro Meilenstein (z. B. `feat(log): quick log with nearby spots`).
 
 Legende: **[Du]** = Schritt, den du manuell machen musst (Konten, Gerätetest, Entscheidungen).
@@ -61,7 +61,7 @@ Legende: **[Du]** = Schritt, den du manuell machen musst (Konten, Gerätetest, E
 - **Titel & Achievements:** „Erste Insel“, „10 Inseln erobert“, „Perfekte 10“, „Kartograf“ (5 Städte), „Stammgast“ (5× derselbe Laden).
 - **Abstimmung „Nächster Kurs“:** Spots für den nächsten Ausflug vorschlagen, Crew stimmt ab.
 - **Push:** „Neuer Besuch – deine Note fehlt“, „Neue Insel auf der Karte“, Ergebnis der Abstimmung (braucht Dev Build).
-- Animationen: Zähler beim Gesamtwert, Konfetti bei neuem Platz 1, Wellen-Hintergrund (respektiert „Animationen reduzieren“).
+- Animationen: „Kopfgeld erhöht!“ wenn ein Laden im Ranking steigt, Zähler beim Gesamtwert, Konfetti bei neuem Platz 1, Wellen-Hintergrund (respektiert „Animationen reduzieren“).
 - **[Du]:** Expo-Konto + `eas init` für Push, Gerätetest.
 
 ## M6 – Cloud & Release

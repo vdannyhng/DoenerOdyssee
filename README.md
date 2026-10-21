@@ -67,7 +67,7 @@ supabase/           Migrationen (Schema + RLS) und Demo-Seed
 - **Schatzsuche:** Empfehlungen aus den Noten der Crew; Läden in der Nähe aus OpenStreetMap (Overpass).
 - **Rechte (RLS):** Jede Person sieht alle Noten ihrer Crew, ändert aber nur die eigenen. Nur der
   Captain löscht Spots, entfernt Mitglieder und erneuert den Einladungscode.
-- **Design:** eigener Piraten-Look ohne Originalbilder, -logos, -figuren oder -namen.
+- **Design:** One-Piece-Look für die private Crew (Steckbriefe, Berries, Flying Lamb, Logport) – alle Grafiken selbst gezeichnet.
 
 ## Stand
 
