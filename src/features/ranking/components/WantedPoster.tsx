@@ -90,85 +90,93 @@ export function WantedPoster({ rank, name, overall, raters, tier, photoUrl, size
               .springify()
               .damping(14)
       }
-      style={[styles.hang, { transform: [{ rotate: `${tilt}deg` }] }]}
     >
-      <Pressable
-        onPress={onPress}
-        accessibilityRole="button"
-        accessibilityLabel={t.ranking.posterA11y(rank, name, score, raters)}
-        style={({ pressed }) => [styles.frame, { padding: s.frame }, pressed && styles.pressed]}
-      >
-        <View
-          style={[styles.paper, { padding: s.pad }]}
-          onLayout={(e) => setPaperWidth(e.nativeEvent.layout.width)}
+      {/* Schräglage auf einer eigenen View, damit die Einblend-Animation das transform nicht überschreibt */}
+      <View style={[styles.hang, { transform: [{ rotate: `${tilt}deg` }] }]}>
+        <Pressable
+          onPress={onPress}
+          accessibilityRole="button"
+          accessibilityLabel={t.ranking.posterA11y(rank, name, score, raters)}
+          style={({ pressed }) => [styles.frame, { padding: s.frame }, pressed && styles.pressed]}
         >
-          <PosterPaper seed={rank} />
-          <Text
-            numberOfLines={1}
-            adjustsFontSizeToFit
-            style={[styles.wanted, { fontSize: wantedSize, lineHeight: wantedSize * 1.08 }]}
+          <View
+            style={[styles.paper, { padding: s.pad }]}
+            onLayout={(e) => setPaperWidth(e.nativeEvent.layout.width)}
           >
-            {t.ranking.wanted}
-          </Text>
-          <View style={styles.photo}>
-            {photoUrl ? (
-              <Image source={{ uri: photoUrl }} style={StyleSheet.absoluteFill} contentFit="cover" />
-            ) : (
-              <DoenerIcon size={s.icon} />
-            )}
-          </View>
-
-          <View style={styles.lower} onLayout={(e) => setLowerHeight(e.nativeEvent.layout.height)}>
-            {lowerHeight > 0 ? (
-              <>
-                <View style={[styles.ornament, styles.left]}>
-                  <ScrollOrnament height={lowerHeight} color={INK_SOFT} />
-                </View>
-                <View style={[styles.ornament, styles.right]}>
-                  <ScrollOrnament height={lowerHeight} color={INK_SOFT} mirror />
-                </View>
-              </>
-            ) : null}
-            <Text numberOfLines={1} adjustsFontSizeToFit style={[styles.dead, { fontSize: deadSize }]}>
-              {t.ranking.deadOrAlive}
-            </Text>
+            <PosterPaper seed={rank} />
             <Text
-              numberOfLines={twoLines ? 2 : 1}
+              numberOfLines={1}
               adjustsFontSizeToFit
-              style={[styles.name, { fontSize: nameSize, lineHeight: nameSize * 1.12 }]}
+              style={[styles.wanted, { fontSize: wantedSize, lineHeight: wantedSize * 1.08 }]}
             >
-              {title}
+              {t.ranking.wanted}
             </Text>
-            <View style={styles.bountyRow}>
-              <TalerSign size={bountySize * 1.15} color={INK} />
-              <Text numberOfLines={1} adjustsFontSizeToFit style={[styles.bounty, { fontSize: bountySize }]}>
-                {bountyText}
-              </Text>
+            <View style={styles.photo}>
+              {photoUrl ? (
+                <Image source={{ uri: photoUrl }} style={StyleSheet.absoluteFill} contentFit="cover" />
+              ) : (
+                <DoenerIcon size={s.icon} />
+              )}
             </View>
-            <View style={styles.footer}>
-              <Text
-                style={[styles.fine, { fontSize: s.fine, lineHeight: s.fine * 1.3 }]}
-                numberOfLines={size === 'lg' ? 3 : 2}
-              >
-                {fine}
+
+            <View style={styles.lower} onLayout={(e) => setLowerHeight(e.nativeEvent.layout.height)}>
+              {lowerHeight > 0 ? (
+                <>
+                  <View style={[styles.ornament, styles.left]}>
+                    <ScrollOrnament height={lowerHeight} color={INK_SOFT} />
+                  </View>
+                  <View style={[styles.ornament, styles.right]}>
+                    <ScrollOrnament height={lowerHeight} color={INK_SOFT} mirror />
+                  </View>
+                </>
+              ) : null}
+              <Text numberOfLines={1} adjustsFontSizeToFit style={[styles.dead, { fontSize: deadSize }]}>
+                {t.ranking.deadOrAlive}
               </Text>
-              <Text style={[styles.marine, { fontSize: bountySize * 0.8 }]}>{t.ranking.marine}</Text>
+              <Text
+                numberOfLines={twoLines ? 2 : 1}
+                adjustsFontSizeToFit
+                style={[styles.name, { fontSize: nameSize, lineHeight: nameSize * 1.12 }]}
+              >
+                {title}
+              </Text>
+              <View style={styles.bountyRow}>
+                <TalerSign size={bountySize * 1.15} color={INK} />
+                <Text
+                  numberOfLines={1}
+                  adjustsFontSizeToFit
+                  style={[styles.bounty, { fontSize: bountySize }]}
+                >
+                  {bountyText}
+                </Text>
+              </View>
+              <View style={styles.footer}>
+                <Text
+                  style={[styles.fine, { fontSize: s.fine, lineHeight: s.fine * 1.3 }]}
+                  numberOfLines={size === 'lg' ? 3 : 2}
+                >
+                  {fine}
+                </Text>
+                <Text style={[styles.marine, { fontSize: bountySize * 0.8 }]}>{t.ranking.marine}</Text>
+              </View>
             </View>
           </View>
+        </Pressable>
+        {/* Nagel */}
+        <View style={styles.nail} />
+        {/* Wachssiegel mit Rang */}
+        <View
+          style={[
+            styles.seal,
+            { width: s.seal, height: s.seal, borderRadius: s.seal / 2, backgroundColor: sealColor },
+          ]}
+        >
+          <Text
+            style={[styles.sealText, { fontSize: s.seal * 0.5, color: rank <= 3 ? '#2A1A0C' : '#FFF4E0' }]}
+          >
+            {rank}
+          </Text>
         </View>
-      </Pressable>
-      {/* Nagel */}
-      <View style={styles.nail} />
-      {/* Wachssiegel mit Rang */}
-      <View
-        style={[
-          styles.seal,
-          { width: s.seal, height: s.seal, borderRadius: s.seal / 2, backgroundColor: sealColor },
-        ]}
-      >
-        <Text style={[styles.sealText, { fontSize: s.seal * 0.5, color: rank <= 3 ? '#2A1A0C' : '#FFF4E0' }]}>
-          {rank}
-        </Text>
       </View>
     </Animated.View>
   );
