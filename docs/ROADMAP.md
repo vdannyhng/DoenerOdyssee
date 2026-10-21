@@ -17,7 +17,7 @@ Legende: **[Du]** = Schritt, den du manuell machen musst (Konten, Gerätetest, E
 
 ## M1 – Fundament & MVP ✅
 
-- Expo SDK 58, TypeScript strict, Expo Router, ESLint, Prettier, Jest, secretlint + Pre-Commit-Hook.
+- Expo SDK 57, TypeScript strict, Expo Router, ESLint, Prettier, Jest, secretlint + Pre-Commit-Hook.
 - Theme (Pergament, Ozeanblau, Rot, Gold, Holz) mit Dunkelmodus „Nachtfahrt“, Schriften Pirata One + Nunito, eigene Illustrationen (Jolly Roger mit Dönerspiessen, 8 Piraten-Avatare, Taler-Münze), App-Icon.
 - Supabase lokal (Docker, Ports 553xx): `crews`, `members`, `spots`, `visits`, `visit_participants`, `ratings`, RPCs für Crew gründen/beitreten/Code erneuern/Mitglied entfernen, RLS, Realtime.
 - Login mit E-Mail + Passwort, Crew per Einladungscode, Captain-Rechte.

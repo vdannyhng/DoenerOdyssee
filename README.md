@@ -5,7 +5,7 @@ bewertet den Geschmack von 0–10. Die App zeigt die Top 10 als Wanted-Poster an
 (Tiers als Schiffe), alle Einzelnoten und Fotos pro Spot sowie Empfehlungen in der Schatzsuche.
 Anforderungen: [doener-tierlist-anforderungen.md](doener-tierlist-anforderungen.md) · Roadmap: [docs/ROADMAP.md](docs/ROADMAP.md).
 
-**Stack:** Expo SDK 58 · React Native · TypeScript (strict) · Expo Router · Supabase (Postgres, Auth, RLS,
+**Stack:** Expo SDK 57 · React Native · TypeScript (strict) · Expo Router · Supabase (Postgres, Auth, RLS,
 Realtime) · TanStack Query · Zustand · Jest
 
 ## Setup (lokal mit Docker)
