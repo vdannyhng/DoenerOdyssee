@@ -31,7 +31,8 @@ export async function searchAddress(query: string): Promise<Place[]> {
   return parsed.map((r) => ({ lat: r.lat, lng: r.lon, address: shortAddress(r.display_name) }));
 }
 
-async function reverse(point: GeoPoint): Promise<string> {
+/** Adresse zu einem Punkt (leer, wenn nichts gefunden oder offline) */
+export async function addressFor(point: GeoPoint): Promise<string> {
   try {
     const url = `${NOMINATIM}/reverse?format=jsonv2&lat=${point.lat}&lon=${point.lng}`;
     const res = await fetch(url, { headers: HEADERS });
@@ -48,7 +49,7 @@ export async function currentPlace(): Promise<Place | 'denied'> {
   if (status !== Location.PermissionStatus.GRANTED) return 'denied';
   const pos = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
   const point = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-  return { ...point, address: await reverse(point) };
+  return { ...point, address: await addressFor(point) };
 }
 
 /**

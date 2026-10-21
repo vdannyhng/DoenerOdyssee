@@ -71,8 +71,8 @@ supabase/           Migrationen (Schema + RLS) und Demo-Seed
 
 ## Stand
 
-M1 (MVP) und M2 (Schnell-Logbuch, Fotos, Flotte, Schatzsuche) sind umgesetzt. Als Nächstes kommt die
-Seekarte mit Reiseroute – Details und alle weiteren Etappen in [docs/ROADMAP.md](docs/ROADMAP.md).
+M1 (MVP), M2 (Schnell-Logbuch, Fotos, Flotte, Schatzsuche) und M3 (Seekarte) sind umgesetzt. Als Nächstes kommt
+M4 (Teilen & Statistik) – Details und alle weiteren Etappen in [docs/ROADMAP.md](docs/ROADMAP.md).
 
 Für Supabase Cloud später ein Projekt anlegen, `npx supabase link` + `npx supabase db push` ausführen und
 URL/Publishable Key in `.env.local` eintragen.

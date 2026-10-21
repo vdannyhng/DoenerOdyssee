@@ -1,6 +1,6 @@
 # Döner Odyssee – Roadmap
 
-Stand: 2026-10-21 · **M1 ✅ · M2 ✅** · M3 Seekarte · M4 Teilen & Statistik · M5 Spielspass · M6 Cloud & Release
+Stand: 2026-10-21 · **M1 ✅ · M2 ✅ · M3 ✅** · M4 Teilen & Statistik · M5 Spielspass · M6 Cloud & Release
 
 ## Definition of Done (gilt für jeden Meilenstein)
 
@@ -34,7 +34,7 @@ Legende: **[Du]** = Schritt, den du manuell machen musst (Konten, Gerätetest, E
 - **Schatzsuche:** „Die Crew empfiehlt dir“ (gut bewertet, von dir noch nicht probiert), Wunschliste, unentdeckte Döner-Läden im Umkreis von 2 km aus OpenStreetMap (Overpass) mit „Auf die Wunschliste“ und Link zu Google-Maps-Bewertungen.
 - **Tests:** Noten-Eingabe, Entfernung, Overpass-Auswertung, Empfehlungen.
 
-## M3 – Seekarte („Grand Line“ der Crew)
+## M3 – Seekarte („Grand Line“ der Crew) ✅
 
 - Karte mit `react-native-maps` (Expo Go): Spots als Insel-Marker in Tier-Farbe, Wunschliste grau.
 - Gestrichelte Reiseroute in chronologischer Reihenfolge der Besuche („unsere Odyssee“).
@@ -42,7 +42,10 @@ Legende: **[Du]** = Schritt, den du manuell machen musst (Konten, Gerätetest, E
 - Filter: Top 10, Wunschliste, nach Schiff/Tier; Clustering bei vielen Spots.
 - Karte als Umschalter in der Schatzsuche (Liste/Karte) – auch die OSM-Funde erscheinen dort.
 - Pin auf der Karte setzen beim Anlegen eines Spots.
-- **[Du]:** Entscheiden, ob iOS-Standardkarte reicht (ja, siehe Anforderungen) – Seekarten-Stil nur auf Android.
+- **Entschieden:** iOS zeigt die Apple-Standardkarte, Android den Pergament-Seekartenstil (Google Maps).
+- **Umgesetzt:** Tab „Seekarte“ mit Umschalter Karte/Schatzsuche; Insel-Marker mit Tier-Buchstabe auf Sandbank, Wunschliste grau mit „?“, OSM-Funde als Kompass-Marker; gestrichelte Route (nur Filter „Alle“); Raster-Clustering ab 25 Markern, Antippen zoomt hinein; Vorschaukarte mit „Ansehen“ und „Route“; Pin-Setzen per Antippen oder Ziehen, Adresse per Nominatim. Im Browser gibt es statt der Karte einen Hinweis.
+- **Tests:** Reiseroute, Filter, Kartenausschnitt, Clustering.
+- **[Du] offen:** Karte auf dem Handy in Expo Go ausprobieren (Marker, Route, Pin setzen).
 
 ## M4 – Teilen & Statistik
 

@@ -18,6 +18,10 @@ export default function AppLayout() {
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="spots/index" options={{ title: t.spots.listTitle }} />
       <Stack.Screen name="spots/new" options={{ title: t.ranking.newSpot, presentation: 'modal' }} />
+      <Stack.Screen
+        name="spots/pick-location"
+        options={{ title: t.chart.pickTitle, presentation: 'modal' }}
+      />
       <Stack.Screen name="spots/[id]/index" options={{ title: '' }} />
       <Stack.Screen name="spots/[id]/edit" options={{ title: t.spots.editTitle, presentation: 'modal' }} />
       <Stack.Screen name="visits/new" options={{ title: t.visits.newTitle, presentation: 'modal' }} />

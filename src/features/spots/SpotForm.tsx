@@ -1,12 +1,13 @@
-import { router } from 'expo-router';
-import { useState } from 'react';
+import { router, useFocusEffect } from 'expo-router';
+import { useCallback, useState } from 'react';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Platform, Pressable, StyleSheet, View } from 'react-native';
 
 import { AppText, Button, Card, Screen, TextField } from '@/components/ui';
 import { useCrew } from '@/features/crew/api';
 import { useLogbook, useSaveSpot, type PhotoChange, type Spot } from '@/features/logbook/api';
 import { PhotoField } from '@/features/photos/PhotoField';
+import { useLocationPick } from '@/features/seachart/pickStore';
 import { t } from '@/i18n/de';
 import { confirm } from '@/lib/confirm';
 import { errorMessage } from '@/lib/errors';
@@ -48,6 +49,18 @@ export function SpotForm({ spot, initialName, onCreated }: Props) {
   const [locating, setLocating] = useState<'search' | 'gps' | null>(null);
   const [locationError, setLocationError] = useState<string | null>(null);
   const [touched, setTouched] = useState(false);
+  const { picked, setPicked } = useLocationPick();
+
+  // Zurück vom Karten-Picker: gewählten Ort übernehmen
+  useFocusEffect(
+    useCallback(() => {
+      if (picked) {
+        setPlace(picked);
+        setResults(null);
+        setPicked(null);
+      }
+    }, [picked, setPicked]),
+  );
 
   const currency = crew.data?.settings.currency ?? 'EUR';
   const parsedPrice = parsePrice(price);
@@ -208,6 +221,19 @@ export function SpotForm({ spot, initialName, onCreated }: Props) {
               loading={locating === 'gps'}
               onPress={() => void locateMe()}
             />
+            {Platform.OS !== 'web' ? (
+              <Button
+                title={t.chart.pickOnMap}
+                icon="map-marker-plus"
+                variant="secondary"
+                onPress={() =>
+                  router.push({
+                    pathname: '/spots/pick-location',
+                    params: spot ? { lat: String(spot.lat), lng: String(spot.lng) } : {},
+                  })
+                }
+              />
+            ) : null}
             {locating === 'gps' ? <ActivityIndicator color={colors.primary} /> : null}
           </>
         )}

@@ -4,22 +4,29 @@ import { useMemo, useState, type ReactNode } from 'react';
 import { Linking, Pressable, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 
 import { DoenerIcon } from '@/components/art/DoenerIcon';
-import { AppText, Button, Card, ErrorState, LoadingState, TierBadge } from '@/components/ui';
+import { AppText, Button, Card, Chip, ErrorState, LoadingState, TierBadge } from '@/components/ui';
 import { useCrew, useMyMember } from '@/features/crew/api';
 import { useSaveSpot } from '@/features/logbook/api';
-import { formatScore } from '@/features/ranking/scoring';
+import { TIER_KEYS, formatScore } from '@/features/ranking/scoring';
 import { useRanking, type SpotSummary } from '@/features/ranking/useRanking';
 import type { GeoPoint } from '@/features/spots/duplicates';
 import { currentPoint } from '@/features/spots/geocoding';
 import { formatDistance } from '@/features/spots/nearby';
 import { fetchNearbyDoener, reviewsUrl, type OsmPlace } from '@/features/treasure/overpass';
+import { buildRoute, filterSummaries, type ChartFilter } from '@/features/seachart/chart';
+import SeaMap from '@/features/seachart/SeaMap';
 import { recommendForMember, wishlist } from '@/features/treasure/recommend';
 import { t } from '@/i18n/de';
 import { errorMessage } from '@/lib/errors';
 import { radius, spacing } from '@/theme/tokens';
 import { useTheme } from '@/theme/useTheme';
 
-/** Schatzsuche: was die Crew dir empfiehlt, die Wunschliste und unentdeckte Läden in der Nähe */
+const FILTERS: ChartFilter[] = ['all', 'top10', 'wishlist', ...TIER_KEYS];
+
+/**
+ * Seekarte: alle Inseln auf der Karte mit Reiseroute – oder als Liste mit der Schatzsuche
+ * (Empfehlungen der Crew, Wunschliste, unentdeckte Läden in der Nähe).
+ */
 export default function TreasureScreen() {
   const { colors } = useTheme();
   const { data, logbook, isLoading, error, refetch, isRefetching } = useRanking();
@@ -31,6 +38,8 @@ export default function TreasureScreen() {
   const [searching, setSearching] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [added, setAdded] = useState<Set<string>>(new Set());
+  const [view, setView] = useState<'map' | 'list'>('map');
+  const [filter, setFilter] = useState<ChartFilter>('all');
 
   const summaries = useMemo(() => (data ? [...data.summaries.values()] : []), [data]);
   const forYou = useMemo(
@@ -39,6 +48,8 @@ export default function TreasureScreen() {
     [summaries, logbook, me.data],
   );
   const wish = useMemo(() => wishlist(summaries), [summaries]);
+  const shown = useMemo(() => filterSummaries(summaries, filter), [summaries, filter]);
+  const route = useMemo(() => (logbook ? buildRoute(logbook.visits, logbook.spots) : []), [logbook]);
 
   if (isLoading) return <LoadingState />;
   if (error && !data) return <ErrorState message={errorMessage(error)} onRetry={() => void refetch()} />;
@@ -103,12 +114,82 @@ export default function TreasureScreen() {
     </Pressable>
   );
 
+  const toggle = (
+    <View style={[styles.toggle, { backgroundColor: colors.surface, borderColor: colors.border }]}>
+      {(['map', 'list'] as const).map((v) => (
+        <Pressable
+          key={v}
+          accessibilityRole="tab"
+          accessibilityState={{ selected: view === v }}
+          onPress={() => setView(v)}
+          style={[styles.toggleItem, view === v && { backgroundColor: colors.primary }]}
+        >
+          <MaterialCommunityIcons
+            name={v === 'map' ? 'map-legend' : 'format-list-bulleted'}
+            size={18}
+            color={view === v ? colors.onPrimary : colors.primary}
+          />
+          <AppText variant="label" tone={view === v ? 'onPrimary' : 'primary'}>
+            {v === 'map' ? t.chart.map : t.chart.list}
+          </AppText>
+        </Pressable>
+      ))}
+    </View>
+  );
+
+  if (view === 'map') {
+    return (
+      <View style={[styles.flex, { backgroundColor: colors.background }]}>
+        <View style={[styles.mapBar, { borderBottomColor: colors.border }]}>
+          {toggle}
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.filters}
+          >
+            {FILTERS.map((f) => (
+              <Chip
+                key={f}
+                label={t.chart.filters[f as keyof typeof t.chart.filters] ?? t.tiers.names[f as 'S']}
+                selected={filter === f}
+                onPress={() => setFilter(f)}
+              />
+            ))}
+            <Chip
+              label={searching ? t.common.loading : nearby ? t.treasure.searchAgain : t.treasure.search}
+              onPress={() => void search()}
+              leading={<MaterialCommunityIcons name="compass-rose" size={16} color={colors.primary} />}
+            />
+          </ScrollView>
+          {searchError ? (
+            <AppText variant="caption" tone="danger">
+              {searchError}
+            </AppText>
+          ) : nearby && !nearby.length ? (
+            <AppText variant="caption" tone="muted">
+              {t.treasure.noneFound}
+            </AppText>
+          ) : null}
+        </View>
+        <SeaMap
+          spots={shown}
+          route={filter === 'all' ? route : []}
+          discoveries={nearby ?? []}
+          addedDiscoveries={added}
+          onOpenSpot={(id) => router.push(`/spots/${id}`)}
+          onAddDiscovery={addToWishlist}
+        />
+      </View>
+    );
+  }
+
   return (
     <ScrollView
       style={{ backgroundColor: colors.background }}
       contentContainerStyle={styles.content}
       refreshControl={<RefreshControl refreshing={isRefetching} onRefresh={() => void refetch()} />}
     >
+      {toggle}
       <Card>
         <View style={styles.head}>
           <MaterialCommunityIcons name="star-shooting" size={26} color={colors.gold} />
@@ -233,4 +314,21 @@ const styles = StyleSheet.create({
   placeHead: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   placeActions: { flexDirection: 'row', gap: spacing.sm },
   attribution: { textAlign: 'right' },
+  mapBar: { padding: spacing.sm, gap: spacing.sm, borderBottomWidth: StyleSheet.hairlineWidth },
+  filters: { gap: spacing.sm, paddingRight: spacing.md },
+  toggle: {
+    flexDirection: 'row',
+    borderWidth: 1.5,
+    borderRadius: radius.pill,
+    padding: 3,
+    alignSelf: 'center',
+  },
+  toggleItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    minHeight: 40,
+    paddingHorizontal: spacing.lg,
+    borderRadius: radius.pill,
+  },
 });
