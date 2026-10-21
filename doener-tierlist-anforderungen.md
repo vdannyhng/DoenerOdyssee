@@ -46,7 +46,7 @@ Bilder und Logos zeichnen wir trotzdem selbst nach, damit alles einheitlich auss
 
 - Name (Pflicht), Standort (Pflicht): Adresse suchen, aktueller Standort oder **Pin auf der Karte setzen**.
 - Optional: Preis des klassischen Döners (€), Foto vom Laden, Notiz.
-- Status ergibt sich automatisch: **Entdeckt** (Wunschliste, noch keine Note) oder **Erobert**.
+- Status ergibt sich automatisch: **Neue Welt** (noch keine Note, Wunschliste) oder **Erobert**.
 - Duplikat-Warnung bei ähnlichem Namen oder weniger als 50 m Abstand.
 
 ### 4.2 Logbuch (Besuch eintragen) – so schnell wie möglich
@@ -85,35 +85,37 @@ Ein Eintrag soll in wenigen Sekunden erledigt sein, am Tisch, mit einer Hand:
 - Noten aller Mitglieder als Balken mit Crew-Schnitt (wer bewertet strenger/milder), aufklappbar pro Besuch.
 - Fotoalbum, Logbuch aller Besuche, „Neuer Besuch“ und „Route öffnen“ (Karten-App des Handys).
 
-### 4.6 Die Flotte (statt klassischer Tier List)
+### 4.6 Ränge der Meere (statt klassischer Tier List)
 
-Jeder Tier ist ein Schiff, die Inseln hängen als Wimpel daran:
+Jeder Tier ist ein Rang aus der Welt von One Piece, dazu ein passendes Schiff; die Inseln hängen als
+Wimpel daran:
 
-| Tier | Schiff                               | ab Note  |
-| ---- | ------------------------------------ | -------- |
-| S    | Flaggschiff (unsere **Flying Lamb**) | 9,00     |
-| A    | Fregatte                             | 8,00     |
-| B    | Brigg                                | 7,00     |
-| C    | Schoner                              | 5,50     |
-| D    | Ruderboot                            | 4,00     |
-| F    | Floß                                 | darunter |
+| Tier | Rang              | Schiff                 | ab Note  |
+| ---- | ----------------- | ---------------------- | -------- |
+| S    | Yonko             | unsere **Flying Lamb** | 9,00     |
+| A    | Admiral           | Fregatte               | 8,00     |
+| B    | Samurai der Meere | Brigg                  | 7,00     |
+| C    | Supernova         | Schoner                | 5,50     |
+| D    | East Blue         | Ruderboot              | 4,00     |
+| F    | Impel Down        | Floß                   | darunter |
 
-Schwellen sind in den Crew-Einstellungen änderbar. Der Tier steht immer auch als Buchstabe da.
+Schwellen sind in den Einstellungen der Bande änderbar. Der Tier steht immer auch als Buchstabe da.
 
-### 4.7 Seekarte (Tab mit Logport-Symbol)
+### 4.7 Grand Line (Tab mit Logport-Symbol)
 
 - Umschalter **Karte / Schatzsuche**.
-- Karte: Inseln als Marker in Tier-Farbe, Wunschliste grau; **gestrichelte Reiseroute** in Besuchsreihenfolge;
-  Filter (Alle, Top 10, Wunschliste, je Schiff); Pins bündeln sich bei vielen Inseln; Vorschaukarte beim
+- Karte: Inseln als Marker in Rang-Farbe, Neue Welt grau; **gestrichelte Reiseroute** in Besuchsreihenfolge;
+  Filter (Alle, Top 10, Neue Welt, je Rang); Pins bündeln sich bei vielen Inseln; Vorschaukarte beim
   Antippen; „Mein Standort“ und „Alle zeigen“.
-- **Schatzsuche:** „Die Crew empfiehlt dir“ (gut bewertet, von dir noch nicht probiert), Wunschliste und
-  unentdeckte Döner-Läden im Umkreis von 2 km aus OpenStreetMap – mit „Auf die Wunschliste“ und Link zu
+- **Schatzsuche:** „Die Bande empfiehlt dir“ (gut bewertet, von dir noch nicht probiert), Neue Welt und
+  unbekannte Döner-Läden im Umkreis von 2 km aus OpenStreetMap – mit „In die Neue Welt“ und Link zu
   den Google-Maps-Bewertungen. Die Funde erscheinen auch auf der Karte.
 
-### 4.8 Crew & Einstellungen
+### 4.8 Piratenbande & Einstellungen
 
-- Crew-Seite: Jolly Roger, Crew-Name, Anzahl Inseln/Expeditionen, Mitglieder, Einladungscode.
-- Einstellungen: Profil; für den Captain Crew-Name, Währung, Mindestbewerter, Tier-Schwellen;
+- Banden-Seite: Jolly Roger, Name der Bande, Anzahl Inseln/Abenteuer, Mitglieder mit Rolle an Bord
+  (Smutje, Navigatorin, Schwertkämpfer, Musiker …), Einladungscode; Käpt’n schickt über die Planke.
+- Einstellungen: Profil; für den Käpt’n Name der Bande, Währung, Mindestbewerter, Rang-Schwellen;
   pro Gerät Tag/Nachtfahrt (Dunkelmodus) und „Animationen reduzieren“.
 
 ## 5. Look & Feel
@@ -122,9 +124,11 @@ Schwellen sind in den Crew-Einstellungen änderbar. Der Tier steht immer auch al
 - **Schriften:** Bangers für Überschriften, Abril Fatface auf den Steckbriefen, Nunito für Fließtext.
 - **Eigene Zeichnungen:** Jolly Roger (Totenkopf mit Dönerbrot-Hut, Dönerspieße als Knochen, auf schwarzer
   Flagge = App-Icon), Flying Lamb, Logport, Steckbrief-Icon, Berry-Zeichen, Schiffe, Avatare, Döner.
-- **Tab-Leiste:** Wanted (Steckbrief) · Flotte (Flying Lamb) · **Logbuch (großer Feder-Knopf)** ·
-  Seekarte (Logport) · Crew (Piratenhut).
-- **Textton:** augenzwinkernd piratig („Neue Insel entdeckt!“, „Ins Logbuch eintragen“), aber klar.
+- **Tab-Leiste:** Wanted (Steckbrief) · Ränge (Flying Lamb) · **Logbuch (großer Feder-Knopf)** ·
+  Grand Line (Logport) · Bande (Piratenhut).
+- **Begriffe aus One Piece:** Bande, Käpt’n, Berries, Grand Line, Neue Welt, Steckbrief, Marine,
+  „Ich werde König der Döner!“.
+- **Textton:** augenzwinkernd wie die Serie („Neue Insel entdeckt!“, „Über die Planke schicken“), aber klar.
 - **Bedienbarkeit vor Deko:** Touch-Ziele ≥ 44 pt, gute Kontraste, Screenreader-Beschriftungen, nie nur
   Farbe als Information, gestaltete Lade-, Leer- und Fehlerzustände, haptisches Feedback beim Bewerten.
 
@@ -148,7 +152,7 @@ Schwellen sind in den Crew-Einstellungen änderbar. Der Tier steht immer auch al
 
 ## 8. Weitere Ideen (aus meiner Sicht sinnvoll, nach Priorität)
 
-1. **Teilen:** Steckbrief, Flotte oder Crew-Statistik als Bild in den Gruppenchat.
+1. **Teilen:** Steckbrief, Ränge oder Banden-Statistik als Bild in den Gruppenchat.
 2. **Crew-Statistiken:** strengster/mildester Pirat, größte Meinungsverschiedenheit, günstigster Döner,
    Preis-Leistungs-Ranking, „Dönerflation“ (Preisverlauf).
 3. **Zusatzkategorien** pro Bewertung (Fleisch, Soße, Brot, Frische, Preis-Leistung) – nur zur Info, nicht

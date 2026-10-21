@@ -1,8 +1,8 @@
 # Döner Odyssee
 
 Private App für unsere Crew: Döner-Läden („Inseln“) anlegen, Besuche ins Logbuch eintragen, jede Person
-bewertet den Geschmack von 0–10. Die App zeigt die Top 10 als Wanted-Poster an einer Holzwand, die Flotte
-(Tiers als Schiffe), alle Einzelnoten und Fotos pro Spot sowie Empfehlungen in der Schatzsuche.
+bewertet den Geschmack von 0–10. Die App zeigt die Top 10 als Wanted-Poster an einer Holzwand, die Ränge der
+Meere (Yonko bis Impel Down), alle Einzelnoten und Fotos pro Spot sowie Empfehlungen in der Schatzsuche.
 Anforderungen: [doener-tierlist-anforderungen.md](doener-tierlist-anforderungen.md) · Roadmap: [docs/ROADMAP.md](docs/ROADMAP.md).
 
 **Stack:** Expo SDK 57 · React Native · TypeScript (strict) · Expo Router · Supabase (Postgres, Auth, RLS,
@@ -61,8 +61,8 @@ supabase/           Migrationen (Schema + RLS) und Demo-Seed
   [src/features/ranking/scoring.ts](src/features/ranking/scoring.ts).
 - **Noten:** eingeben mit einer Nachkommastelle (0.1er-Schritte), Durchschnitte mit zwei Nachkommastellen.
 - **Kopfgeld:** gerundeter Gesamtwert × 100 Mio. Berries (eigenes, nachgezeichnetes Berry-Zeichen).
-- **Flotte (Tiers):** S Flaggschiff ≥ 9 · A Fregatte ≥ 8 · B Brigg ≥ 7 · C Schoner ≥ 5.5 · D Ruderboot ≥ 4 ·
-  F Floß (Schwellen in den Crew-Einstellungen änderbar).
+- **Ränge (Tiers):** S Yonko ≥ 9 · A Admiral ≥ 8 · B Samurai der Meere ≥ 7 · C Supernova ≥ 5.5 ·
+  D East Blue ≥ 4 · F Impel Down (Schwellen in den Crew-Einstellungen änderbar).
 - **Fotos:** privater Bucket `photos`, Ordner je Crew, verkleinert auf 1280 px.
 - **Schatzsuche:** Empfehlungen aus den Noten der Crew; Läden in der Nähe aus OpenStreetMap (Overpass).
 - **Rechte (RLS):** Jede Person sieht alle Noten ihrer Crew, ändert aber nur die eigenen. Nur der
