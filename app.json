@@ -1,0 +1,65 @@
+{
+  "expo": {
+    "name": "Döner Odyssee",
+    "slug": "doener-odyssee",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "doenerodyssee",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "icon": "./assets/images/icon.png",
+      "bundleIdentifier": "de.doenerodyssee.app",
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "de.doenerodyssee.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#141414",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "single",
+      "favicon": "./assets/images/favicon.png",
+      "name": "Döner Odyssee",
+      "lang": "de"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#F1E4C3",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 160,
+          "dark": {
+            "backgroundColor": "#0D1726"
+          }
+        }
+      ],
+      "expo-sqlite",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Döner Odyssee nutzt deinen Standort nur, um einen neuen Spot an deiner aktuellen Position anzulegen."
+        }
+      ],
+      "expo-font",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Döner Odyssee nutzt deine Fotos, damit du Bilder von Döner und Läden ins Logbuch einfügen kannst.",
+          "cameraPermission": "Döner Odyssee nutzt die Kamera, damit du deinen Döner fürs Logbuch fotografieren kannst.",
+          "microphonePermission": false
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": false,
+      "reactCompiler": true
+    }
+  }
+}
